@@ -1,2 +1,142 @@
-# OOP-new
-Tute for oop
+//Iprint.java
+package EX_01;
+
+public interface Iprint {
+	
+	void printLine();
+	void printDetails();
+	
+}
+//----------------------------------------------------------------------------------------------------------------------------------------
+//Item.java
+package EX_01;
+
+abstract class Item implements Iprint{
+	
+	private int itemNo;
+	private String name;
+	private double unitPrice;
+	private int qty;
+	
+	public Item(int itemNo, String name, double unitPrice, int qty) {
+		super();
+		this.itemNo = itemNo;
+		this.name = name;
+		this.unitPrice = unitPrice;
+		this.qty = qty;
+	}
+
+	public void printLine() {
+		System.out.println("Item no:"+itemNo+" Name "+name+ "Unit Price:"+unitPrice+"Quantity :"+qty);
+		
+	}
+	
+	public void printDetails() {
+		System.out.println("item No: "+itemNo);
+		System.out.println("Name:"+name);
+		System.out.println("Unit price"+unitPrice);
+		System.out.println("Quantity:"+qty);
+	}
+}
+//--------------------------------------------------------------------------------------------------------------
+//MainApp.java
+
+package EX_01;
+
+public class MainApp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Tablet Tab1 = new Tablet(101,"Samsung" , 45000.00 , 2 ,"Samsung","KI7","20tpx");
+		//Tab1.printLine();
+		
+		Tablet Tab2 = new Tablet(102,"Sony" , 35000.00 , 5 ,"Sony","YR4E","30tpx");
+		//Tab1.printDetails();
+		
+		Vegetable veg1 = new Vegetable(200, "Benas",50.00,1000,true,120);
+		//veg1.printLine();
+		
+		Vegetable veg2 = new Vegetable(300, "Carrot",70.00,500,false,150);
+		//veg2.printDetails();
+		
+		Iprint arr[] = new Iprint[4];
+		arr[0] = Tab1;
+		arr[1] = Tab2;
+		arr[2] = veg1;
+		arr[3] = veg2;
+		
+		for(int i=0; i<4;i++) {
+			arr[i].printLine();
+			System.out.println();
+		}
+		
+		for(int i=0; i<4;i++) {
+			arr[i].printDetails();
+			System.out.println();
+		}
+	}
+  //---------------------------------------------------------------------------------------------------------------------------
+  //Tablet.java
+  
+  package EX_01;
+
+public class Tablet  extends Item {
+	
+	private String brand;
+	private String model;
+	private String camera;
+	
+	public Tablet(int itemNo, String name, double unitPrice, int qty, String brand, String model, String camera) {
+		super(itemNo, name, unitPrice, qty);
+		this.brand = brand;
+		this.model = model;
+		this.camera = camera;
+	}
+	
+	@Override
+	public void printLine() {
+		super.printLine();
+		System.out.println("Brand :"+this.brand+"Model :"+this.model+"Camera :"+this.camera);
+	}
+	
+	@Override
+	public void printDetails() {
+		super.printDetails();
+		System.out.println("Brand :"+this.brand);
+		System.out.println("Model :"+this.model);
+		System.out.println("Camera :"+this.camera);
+		
+	}
+}
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Vegetable.java
+
+package EX_01;
+
+public class Vegetable extends Item {
+
+	private boolean organic;
+	private int calories;
+	
+	public Vegetable(int itemNo, String name, double unitPrice, int qty, boolean organic, int calories) {
+		super(itemNo, name, unitPrice, qty);
+		this.organic = organic;
+		this.calories = calories;
+	}
+	
+	public void printLine() {
+		super.printLine();
+		System.out.println("Organic :"+this.organic+"Calories :"+this.calories);
+	}
+	
+	@Override
+	public void printDetails() {
+		super.printDetails();
+		System.out.println("Organic :"+this.organic);
+		System.out.println("calories :"+this.calories);
+		
+	}
+	
+}
+
+
