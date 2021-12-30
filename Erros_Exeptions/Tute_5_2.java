@@ -1,3 +1,4 @@
+//Exeptions
 package Erros_Exeptions;
 
 public class Tute_5_2 {
