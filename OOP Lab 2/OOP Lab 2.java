@@ -1,6 +1,5 @@
 // Exercise 1
 
-
 public class Exercise1 { // begining of the class
 
     public static void main(String[] args) { // Begining of the method
